@@ -1,0 +1,1638 @@
+{
+	"info": {
+		"_postman_id": "bf9803ac-c801-4651-93ef-dc5bc7370a90",
+		"name": "MedBooking_query_postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23413395"
+	},
+	"item": [
+		{
+			"name": "Pacjent",
+			"item": [
+				{
+					"name": "Zajerestruj Pacjenta ( działa )",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"patientDto\": {\r\n    \"name\": \"Kasia\",\r\n    \"surname\": \"Miskowski\",\r\n    \"pesel\": \"61101682346\",\r\n    \"numberPhone\": \"+48965823663\",\r\n    \"mail\": \"deimefreprero-2981@yopmail.com\"\r\n  },\r\n  \"addressDto\": {\r\n     \"city\": \"Kra\",\r\n     \"street\": \"Jana Pawla\",\r\n     \"zipCode\": \"25-697\",\r\n     \"numberStreet\": null,\r\n     \"numberFlat\": \"36A\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patient/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patient",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by pesel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pesel\":\"74073089893\"\r\n}\r\n// Inne poprawne kombinacje:\r\n// - 75120622133,\r\n// - 96080656714,\r\n// - 52062048225,\r\n// - 51060572242,\r\n// - 67061924445,\r\n// - 74073089893.\r\n// - 59071325693,\r\n// - 82011032427,\r\n// - 73071273497,\r\n// - 72122288488,\r\n// - 86072611166,\r\n// - 97080754761,\r\n// - 65062466753,\r\n// - 98062625615,\r\n// - 78030698535.\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patient/pesel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patient",
+								"pesel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Znajdz pacjenta po ID ( działa)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/patient?id=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patient"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Znajdz wszystkich pacjentów ( działa )",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/patient/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patient",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient update ( nr. phone, mail, adress )",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"numberPhone\": \"+48693259885\",\r\n  \"mail\": \"xayillubreve-5751@yopmail.com\",\r\n    \"addressDto\": {\r\n     \"city\": \"Poznan\",\r\n     \"street\": \"Inwalidow\",\r\n     \"zipCode\": \"11-113\",\r\n     \"numberStreet\": 20,\r\n     \"numberFlat\": \"96\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/patient?patientId=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patient"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usun Pacjenta po id ( działa )",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/patient?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"patient"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adres",
+			"item": [
+				{
+					"name": "Znajdz Addres po ID ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/address?id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pobierz wszystkie adresy ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/address/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"address",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LabAssistant",
+			"item": [
+				{
+					"name": "Create LabAssistant ( działa )",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Karol\",\r\n    \"surname\": \"Pawlikowski\",\r\n    \"employeeNumber\": \"232326\",\r\n    \"facility\": {\"id\":3}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/labAssistant/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"labAssistant",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pobierz LabAssistant po ID ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/labAssistant?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"labAssistant"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pobierz wszystkich LabAssistant ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/labAssistant/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"labAssistant",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete LabAssistant po ID ( działa )",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/labAssistant?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"labAssistant"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LaboratoryTest",
+			"item": [
+				{
+					"name": "Create LaboratoryTest ( działa )",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n    \"setLaboratoryTest\": [\"CRP\",\"OB\"],\r\n    \"recommendations\": \"Brak rekomendacji.\",\r\n    \"dateTime\": \"2023-12-28T07:30\",\r\n    \"price\": 250,\r\n    \"facility\": {\r\n    \"id\":3\r\n    },\r\n    \"patientId\": 1,\r\n    \"doctorId\": null,\r\n    \"labAssistant\": null\r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/test/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test",
+								"create"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "102",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get LaboratoryTest by ID ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/test?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all LaboratoryTest ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/test/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add LabAssistant",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/test?idLabAssistant=1&idTest=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test"
+							],
+							"query": [
+								{
+									"key": "idLabAssistant",
+									"value": "1"
+								},
+								{
+									"key": "idTest",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete LaboratoryTest ( działa )",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/test?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Facility",
+			"item": [
+				{
+					"name": "Create facility ( działa )",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"facilityDto\":{\r\n    \"name\":\"AlbiDent\"\r\n    },\r\n    \"addressDto\":{\r\n    \"city\": \"Warszawa\",\r\n    \"street\": null,\r\n    \"zipCode\": \"36-966\",\r\n    \"numberStreet\": null,\r\n    \"numberFlat\": \"25B\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/facility/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"facility",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get facility by id ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/facility?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"facility"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all facility ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/facility/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"facility",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "specjalizacje doktorów zatrudnionych w  placówce",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/facility/specjalization?facilityId=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"facility",
+								"specjalization"
+							],
+							"query": [
+								{
+									"key": "facilityId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuń facility po id ( działa )",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/facility?id=203",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"facility"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "203"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medicin",
+			"item": [
+				{
+					"name": "Create Medicin ( działa )",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Claritine\",\r\n    \"dose\":\"Twice a day 2 pill.\",\r\n    \"quantity\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/medicin/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicin",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get medicin by ID ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/medicin?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicin"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all medicin ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/medicin/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicin",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete medicin ( działa )",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/medicin?id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"medicin"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Prescription",
+			"item": [
+				{
+					"name": "Create Prescription",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"code\": \"3652\",\r\n        \"issureDate\": null,\r\n        \"expirationDate\": null,\r\n        \"medicin\": [\r\n            10,2\r\n        ],\r\n        \"doctorId\": 9,\r\n        \"patientId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/prescription/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prescription",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Prescription by Id ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/prescription?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prescription"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Prescription ( działa )",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/prescription/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prescription",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get prescription for Pharmacy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"3698\",\r\n    \"pesel\":\"51060572242\"\r\n}\r\n\r\n// Inne poprawne kombinacje:\r\n// {\r\n//     \"code\": \"2569\",\r\n//     \"pesel\":\"75120622133\"\r\n// }\r\n// {\r\n//     \"code\": \"3625\",//\r\n//     \"pesel\":\"96080656714\"\r\n// }\r\n// {\r\n//     \"code\": \"9758\",\r\n//     \"pesel\":\"52062048225\"\r\n// }\r\n// {\r\n//     \"code\": \"3698\",\r\n//     \"pesel\":\"51060572242\"\r\n// }\r\n// {\r\n//     \"code\": \"1478\",\r\n//     \"pesel\":\"67061924445\"\r\n// }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/prescription/forPharmacy",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prescription",
+								"forPharmacy"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "2569",
+									"disabled": true
+								},
+								{
+									"key": "pesel",
+									"value": "75120622133",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted Prescription by id ( dzała )",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/prescription?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prescription"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Skills",
+			"item": [
+				{
+					"name": "Create Skills",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"specialization\":\"NEUROLOGIST\",\r\n    \"medicalExaminationEnums\": [\"MEDICAL_CONSULTATION\", \"EEG\", \"EMG\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/skills",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skills"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get skills by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/skills?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skills"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all skill",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/skills/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skills",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted Skill by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/skills?id=54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"skills"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "54"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doctor",
+			"item": [
+				{
+					"name": "Create doctor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doctorDto\": {\r\n    \"name\":\"Juliusz\",\r\n    \"surname\":\"Staszczyk\",\r\n    \"employeeNumber\":\"326518\",\r\n    \"skills\":{\"id\":5},\r\n    \"facility\":[{\"id\":1},{\"id\":2}]\r\n  },\r\n  \"addressDto\": {\r\n     \"city\": \"Kra\",\r\n     \"street\": \"Jana Pawla\",\r\n     \"zipCode\": \"25-697\",\r\n     \"numberStreet\": null,\r\n     \"numberFlat\": \"36A\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/doctor/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Doctor by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/doctor?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all doctor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/doctor/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Policz wypłate doktorów z vizyt",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/doctor/salaryAllVisits?dateFrom=2022-02-03&dateTo=2026-10-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor",
+								"salaryAllVisits"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "2022-02-03"
+								},
+								{
+									"key": "dateTo",
+									"value": "2026-10-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Policz wypłate doktorów z konsultacji",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/doctor/salaryAllConsultation?dateFrom=2022-02-03&dateTo=2026-10-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor",
+								"salaryAllConsultation"
+							],
+							"query": [
+								{
+									"key": "dateFrom",
+									"value": "2022-02-03"
+								},
+								{
+									"key": "dateTo",
+									"value": "2026-10-03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dodaj facility do doktora",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/doctor/addFacility?doctorId=5&facilityId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor",
+								"addFacility"
+							],
+							"query": [
+								{
+									"key": "doctorId",
+									"value": "5"
+								},
+								{
+									"key": "facilityId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ucuń facility to doctor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/doctor/deleteFacility?doctorId=5&facilityId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor",
+								"deleteFacility"
+							],
+							"query": [
+								{
+									"key": "doctorId",
+									"value": "5"
+								},
+								{
+									"key": "facilityId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted doctor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/doctor?id=52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doctor"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StationaryVisit",
+			"item": [
+				{
+					"name": "Create Visit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"specialization\":\"CARDIOLOGIST\",\r\n    \"date\":\"2023-12-17\",\r\n    \"time\":\"10:45:00\",\r\n    \"price\": null,\r\n    \"recommendations\": null,\r\n    \"doctorId\":1,\r\n    \"facilityId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get visit by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all visit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit/getAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pobierz wszystkich umówionych pacjętów na konsultacje z konkretnym doktorem w konkretnym dniu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit/allAppointments?doctorId=14&localDate=2023-03-26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit",
+								"allAppointments"
+							],
+							"query": [
+								{
+									"key": "doctorId",
+									"value": "14"
+								},
+								{
+									"key": "localDate",
+									"value": "2023-03-26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rezerwowanie wizyty stacjonarnej",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit/booking?patientId=2&visitId=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit",
+								"booking"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "2"
+								},
+								{
+									"key": "visitId",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Odwołanie vizyty w placówce",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit/cancellation?visitId=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit",
+								"cancellation"
+							],
+							"query": [
+								{
+									"key": "visitId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted Visit by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit?id=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuń wszystkie vizyty w danym dniu dla konkretnego lekarza",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stationaryVisit/deleteAllOnDay?doctorId=14&localDate=2023-03-26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stationaryVisit",
+								"deleteAllOnDay"
+							],
+							"query": [
+								{
+									"key": "doctorId",
+									"value": "14"
+								},
+								{
+									"key": "localDate",
+									"value": "2023-03-26"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ConsultationsPhone",
+			"item": [
+				{
+					"name": "Create Consultations",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"specialization\":\"CARDIOLOGIST\",\r\n    \"date\":\"2023-12-17\",\r\n    \"time\":\"10:45:00\",\r\n    \"price\": null,\r\n    \"recommendations\": null,\r\n    \"doctorId\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/consultations/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all consultation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consultations/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get consultation bi id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consultations?id=8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pobierz wszystkich umówionych pacjętów na konsultacje z konkretnym doktorem w konkretnym dniu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consultations/all/appointments?doctorId=1&localDate=2023-03-26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations",
+								"all",
+								"appointments"
+							],
+							"query": [
+								{
+									"key": "doctorId",
+									"value": "1"
+								},
+								{
+									"key": "localDate",
+									"value": "2023-03-26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rezerwowanie konsultacji telefonicznej",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consultations/booking?patientId=15&consultationId=7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations",
+								"booking"
+							],
+							"query": [
+								{
+									"key": "patientId",
+									"value": "15"
+								},
+								{
+									"key": "consultationId",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Odwołanie konsultacji telefonicznej",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consultations/cancellation?consultationId=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations",
+								"cancellation"
+							],
+							"query": [
+								{
+									"key": "consultationId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleted Consultations",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consultations?id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuń wszystkie consultacje w danym dniu dla konkretnego lekarza",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/consultations/deleteAllOnDay?doctorId=1&localDate=2023-03-26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"consultations",
+								"deleteAllOnDay"
+							],
+							"query": [
+								{
+									"key": "doctorId",
+									"value": "1"
+								},
+								{
+									"key": "localDate",
+									"value": "2023-03-26"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
