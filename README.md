@@ -1,30 +1,30 @@
 BookingMed
 ===
 
-Aplikacja służy do zarządzania prywatną opieką medyczną. Można wykonywać operacje CRUD oraz inne zapytania np.
+The application is used to manage private medical care. You can perform CRUD operations and other queries, e. g.
 
-- symulacja kupowania recepty w aptece,
-- liczenie sumy zarobionych pieniędzy z odpłatnych wizyt oraz konsultacji telefonicznych dla wszystkich lekarzy,
-- symulacja odnajdywania pacjenta w placówce medycznej po peselu,
-- aktualizowanie danych pacjenta takich jak nr. phone, mail i adres,
-- zwrócenie wszystkich specjalizacji lekarskich oferowanych przez placówkę,
-- zatrudnianie i zwalnianie lekarzy z placówek,
-- rezerwowanie i odwoływanie umówionych wizyt oraz konsultacji lekarskich,
-- usuwanie wszystkich wizyt lub konsultacji lekarskich dla konkretnego doktora w danym dniu,
-- symulacja pobrania wszystkich umówionych pacjentów w danym dniu dla konkretnego lekarza.
+- simulation of buying a prescription in a pharmacy,
+- calculation of income from medical visits and telephone consultations,
+- searching for patients by PESEL number,
+- updating data (phone number, e-mail and address) of patients,
+- download a collection of all medical specialties offered by the institution,
+- recruitment and dismissal of doctors from establishments,
+- booking and cancellation of medical appointments,
+- deletion of all medical appointments or consultations to a particular doctor on a given day,
+- download the list of patients scheduled for a given day with a given doctor.
 
-#  Użyte technologie:
+#  Technologies used:
 - Spring boot,
 - Spring data,
-- Hibernate
-- użyta baza danych MySQL.
+- Hibernate,
+- MySQL database used.
 
-#  Instrukcja:
-- zmodyfikuj application.properties i połącz się z bazą danych,
-- wczytaj dane startowe do bazy danych z pliku (insert-values-db.sql) dołączonego do projektu,
-- zaimportuj zapytania z pliku (MedBooking_query_postman).
+#  Instruction:
+- modify application.properties and connect to database,
+- load the startup data into the database from the file (insert-values-db.sql) attached to the project,
+- import queries from file (MedBooking_query_postman).
 
-### Wartości unikalne w kolumnach:
+### Unique values in columns:
 
 - Patient: pesel, numerPhone, mail,
 - Perscription: code,
@@ -32,8 +32,8 @@ Aplikacja służy do zarządzania prywatną opieką medyczną. Można wykonywać
 - Doctor: employeNumber,
 - LabAsistant: employeNumber.
 
-#  Dodatkowe pliki:
-- schemat bazy danych
+#  Additional Files:
+- database schema,
 - insert-values-db.sql
 - MedBooking_query_postman
 
@@ -53,7 +53,7 @@ Aplikacja służy do zarządzania prywatną opieką medyczną. Można wykonywać
 #### 11. StationaryVisit.
 
 
-### Wybrane endpointy z pominięciem operacji CRUD do uruchamiania metod wraz z opisami, znajdują się poniżej:
+### Selected endpoints with omission of CRUD operations to run methods with descriptions are below:
 
 ### * Prescription
 #### 1. getPrescriptionPharmacy
@@ -82,7 +82,7 @@ Example response:
 ```
 ### * Doctor
 #### 1. salaryAllDoctorsFromVisits
-Metoda liczy sumę zarobionych pieniędzy z odpłatnych wizyt dla wszystkich lekarzy i zwraca mapę.
+The method counts the sum of money earned from paid visits for all doctors and returns the map.
 ````
 Http request in Postman : 
 @GetMapping      http://localhost:8080/doctor/salaryAllVisits
@@ -92,8 +92,8 @@ dateFrom - 2022-02-03
 dateTo - 2026-10-03
 ````
 #### 2. salaryAllDoctorsFromConsultation
-Metoda liczy sumę zarobionych pieniędzy z odpłatnych konsultacji telefonicznych dla wszystkich lekarzy 
-i zwraca mapę.
+The method counts the sum of money earned from paid telephone consultations for all doctors
+and returns the map.
 ```
 Http request in Postman : 
 @GetMapping     http://localhost:8080/doctor/salaryAllConsultation
@@ -103,7 +103,7 @@ dateFrom - 2022-02-03
 dateTo - 2026-10-03
 ```
 #### 3. addFacilityToDoctor
-Z uwagi na fakt, iż lekarze pracują zazwyczaj w kilku placówkach metoda dodaje do lekarza kolejną placówkę.
+Due to the fact that doctors usually work in several facilities, the method adds another facility to the doctor.
 ```
 Http request in Postman : 
 @PatchMapping     http://localhost:8080/doctor/addFacility
@@ -113,7 +113,7 @@ doctorId - 5
 facilityId - 1
 ```
 #### 4. deleteFacilityToDoctor
-Lekarz może się zwolnić z jakiejś placówki dlatego metoda usuwa z doktora daną placówkę.
+The doctor may be discharged from an institution, so the method removes the institution from the doctor.
 ```
 Http request in Postman : 
 @PatchMapping     http://localhost:8080/doctor/deleteFacility
@@ -125,8 +125,8 @@ facilityId - 1
 ```
 ### * Patient
 #### 1. getPatientByPesel
-Metoda symuluje sytuacje, kiedy przychodząc na umówioną wizytę do placówki podajemy Pani w recepcji swój 
-pesel by recepcjonistka mogła nam wskazać pokój, pod który mamy się udać. 
+The method simulates situations when coming for an appointment to the facility we give you your
+so that the receptionist could point us to the room we should go to. 
 ```
 Http request in Postman : 
 @GetMapping     http://localhost:8080/patient/pesel
@@ -145,7 +145,7 @@ Other valid combinations:
 
 ```
 #### 2. updateByPhoneMailAddress
-Metoda aktualizuje dane pacjenta takie jak nr. telefonu, e-mail oraz adres.
+The method updates patient information such as phone number, e-mail and address.
 ```
 Http request in Postman : 
 @PatchMapping     http://localhost:8080/patient
@@ -168,7 +168,7 @@ Postman default body:
 ```
 ### * Facility
 #### 1. specjalizationFacility
-Metoda zwraca zbiór wszystkich specjalizacji lekarskich oferowanych przez daną placówkę.
+The method returns a set of all medical specialties offered by a given facility.
 ```
 Http request in Postman : 
 @GetMapping     http://localhost:8080/facility/specjalization
@@ -179,9 +179,9 @@ facilityId - 2
 ```
 ### * StationaryVisit 
 #### 1. findAllAppointmentsPatientToVisit
-Kiedy Doktor przychodzi do pracy potrzebuje listy wszystkich pacjentów, z którymi jest 
-dziś umówiony, chociażby dlatego, żeby zaprosić odpowiedniego pacjenta do gabinetu z korytarza.
-Metoda przyjmuje ID doktora oraz datę i zwraca wszystkich umówionych pacjentów w tym dniu.
+When the Doctor comes to work he needs a list of all the patients he's with.
+I had an appointment today, if only to invite the right patient into the office down the hall.
+The method takes the doctor's ID and date and returns all scheduled patients on that date.
 ```
 Http request in Postman : 
 @GetMapping     http://localhost:8080/stationaryVisit/allAppointments
@@ -192,7 +192,7 @@ localDate - 2023-03-26
 
 ```
 #### 2. visitBooking
-Metoda rezerwuje wizytę lekarską. Operuje na statusem wyróżniamy takie statusy jak AVAILABLE, NOAVAILABLE.
+The method reserves a doctor's appointment. He's operating on status. We distinguish such statuses as AVAILABLE, NOAVAILABLE.
 ```
 Http request in Postman : 
 @PatchMapping     http://localhost:8080/stationaryVisit/booking
@@ -203,7 +203,7 @@ visitId - 9
 
 ```
 #### 3. cancellationVisit
-Metoda odwołuje rezerwacje wizyty lekarskiej.
+The method cancels appointments.
 ```
 Http request in Postman : 
 @PatchMapping     http://localhost:8080/stationaryVisit/cancellation
@@ -213,11 +213,11 @@ visitId - 8
 
 ```
 #### 4. deleteVisitByDoctorIdAndDay
-Kiedy wiadomo, że doktor nie zjawi się w pracy w danym dniu trzeba odwołać wszystkie wizyty, które
-doktor ma w ten dzień. Metoda usuwa wszystkie wizyty w danym dniu dla konkretnego doktora
-i zwraca listę danych kontaktowych pacjentów, którym odwołano wizyte by móc się z nim skontaktować
-w celu poinformowania o zaistniałej sytuacji oraz umówienia innego terminu.
-Jeśli nie było umówionych pacjentów zwraca null.
+When it is known that the doctor will not show up for work on a given day, you have to cancel all appointments that
+The doctor has that day. The method removes all visits on a given day for a specific doctor
+and returns a list of the contact details of patients whose appointments have been cancelled in order to be able to contact them
+to inform you about the situation and to arrange another date.
+If there were no scheduled patients returns null.
 ```
 Http request in Postman : 
 @DeleteMapping    http://localhost:8080/stationaryVisit/deleteAllOnDay
@@ -229,9 +229,9 @@ localDate - 2023-03-26
 ```
 ### * ConsultationsPhone
 #### 1. findAllAppointmentsPatients
-Kiedy Doktor przychodzi do pracy potrzebuje listy wszystkich pacjentów, do których ma tego dnia zadzwonić.
-Metoda przyjmuje ID doktora oraz datę i zwraca wszystkich umówionych pacjentów 
-oraz dane kontaktowe, by móc się z nimi skontaktować.
+When the Doctor comes to work, he needs a list of all the patients he's supposed to call that day.
+The method takes doctor ID and date and returns all scheduled patients 
+and contact details to be able to contact them.
 ```
 Http request in Postman : 
 @GetMapping     http://localhost:8080/consultations/all/appointments
@@ -242,7 +242,7 @@ localDate - 2023-03-26
 
 ```
 #### 2. consultationBooking
-Metoda rezerwuje konsultację telefoniczną. Operuje na statusem wyróżniamy takie statusy jak AVAILABLE, NOAVAILABLE.
+The method reserves a telephone consultation. Operating on the status we distinguish such statuses as AVAILABLE, NOAVAILABLE.
 ```
 Http request in Postman : 
 @PatchMapping     http://localhost:8080/consultations/booking
@@ -253,7 +253,7 @@ consultationId - 7
 
 ```
 #### 3. cancellationBooking
-Metoda odwołuje konsultację telefoniczną.
+The method cancels the telephone consultation.
 ```
 Http request in Postman : 
 @PatchMapping     http://localhost:8080/consultations/cancellation
@@ -263,11 +263,11 @@ consultationId - 8
 
 ```
 #### 4. deletedConsultationsByDoctorIdAndDay
-Kiedy wiadomo, że doktor nie zjawi się w pracy w danym dniu trzeba odwołać wszystkie konsultacje, które 
-doktor ma w ten dzień. Metoda usuwa wszystkie konsultacje w danym dniu dla konkretnego doktora
-i zwraca listę danych kontaktowych pacjentów, którym odwołano wizyte by móc się z nim skontaktować 
-w celu poinformowania o zaistniałej sytuacji oraz umówienia innego terminu. 
-Jeśli nie było umówionych pacjentów zwraca null.
+When it is known that the doctor will not show up for work on a given day, you have to cancel all consultations that 
+The doctor has that day. The method removes all consultations on a given day for a specific doctor
+and returns a list of the contact details of patients whose appointments have been cancelled in order to be able to contact them 
+to inform you about the situation and to arrange another date. 
+If there were no scheduled patients returns null.
 ```
 Http request in Postman : 
 @DeleteMapping     http://localhost:8080/consultations/deleteAllOnDay
